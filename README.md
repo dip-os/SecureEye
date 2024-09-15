@@ -21,16 +21,16 @@ Active Response: Automatically block suspicious IPs and delete malicious files u
 Scalable Solution: Designed to handle a wide variety of environments and multiple log sources.
 
 ## Architecture
-1. Wazuh SIEM
+### 1. Wazuh SIEM
 Collects and analyzes security logs and events from multiple sources.
 Provides a unified dashboard for monitoring security threats.
-2. Shuffle Webhook
+### 2. Shuffle Webhook
 Automates the process of responding to Wazuh alerts by creating workflows.
 Integration with Wazuh allows you to repeat back alerts and handle various incidents automatically.
-3. DFIR-IRIS
+### 3. DFIR-IRIS
 Connects to Shuffle to create new cases when specific rule IDs are triggered.
 Enables the tracking and management of incident response activities.
-4. VirusTotal Integration
+### 4. VirusTotal Integration
 Active response mechanism to block suspicious IP addresses and delete malicious files based on Wazuh alerts.
 Uses VirusTotal API for malware detection and analysis.
 
