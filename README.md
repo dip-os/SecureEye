@@ -1,7 +1,7 @@
 # SecureEye
 A SIEM + SOAR solution
 ![alt text](https://github.com/dip-os/SecureEye/blob/main/SecureEye-SOC-Sub-Suvadip/secureEye.png?raw=true)
-SecureEye: Wazuh SIEM Integration with Shuffle, DFIR-IRIS, and VirusTotal
+### SecureEye: Wazuh SIEM Integration with Shuffle, DFIR-IRIS, and VirusTotal
 ## Overview
 SecureEye is an advanced security solution that integrates multiple tools to create a seamless workflow for threat detection, incident response, and active remediation. It leverages Wazuh for Security Information and Event Management (SIEM), Shuffle for automated workflows, DFIR-IRIS for incident response case management, and VirusTotal for malware analysis and IP blocking.
 
