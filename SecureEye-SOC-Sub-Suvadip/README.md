@@ -1,35 +1,44 @@
-# SecureEye - SOC
-
+# SecureEye
+A SIEM + SOAR solution
+![alt text](https://github.com/dip-os/SecureEye/blob/main/SecureEye-SOC-Sub-Suvadip/secureEye.png?raw=true)
+# SecureEye: Wazuh SIEM Integration with Shuffle, DFIR-IRIS, and VirusTotal
 ## Overview
-T-Guard is an innovative security operations center (SOC) solution that leverages the strength of leading open-source tools to provide robust protection for your digital assets. Our integrated approach ensures comprehensive defense against a wide range of cyber threats, making your systems and data more secure than ever before. Join us in the fight against cybercrime with T-Guard.
+SecureEye is an advanced security solution that integrates multiple tools to create a seamless workflow for threat detection, incident response, and active remediation. It leverages Wazuh for Security Information and Event Management (SIEM), Shuffle for automated workflows, DFIR-IRIS for incident response case management, and VirusTotal for malware analysis and IP blocking.
 
-![alt text](https://github.com/yevonnaelandrew/t-guard/blob/main/T-Guard.png?raw=true)
+
+
+## How it Works
+1. Log and Event Collection (Wazuh)
+2. Workflow Automation (Shuffle)
+3. Incident Response (DFIR-IRIS)
+4. Active Threat Response (VirusTotal)
 
 ## Features
-- **Wazuh:** Real-time monitoring and alerting for security events.
-- **DFIR-IRIS:** Streamlined incident response and forensics capabilities.
-- **Shuffle:** Automated workflow management to streamline security processes.
-- **MISP:** Open source threat intelligence platform.
+Real-time Log Collection: Collect logs from multiple sources via Wazuh SIEM.
+Automated Workflows: Use Shuffle to create automated workflows for incident alerts.
+Case Management: Create and manage cases for different rule IDs via DFIR-IRIS.
+Active Response: Automatically block suspicious IPs and delete malicious files using VirusTotal integrations.
+Scalable Solution: Designed to handle a wide variety of environments and multiple log sources.
 
-## Prerequisites
-- Docker and Linux basic.
-- Basic understanding of cybersecurity principles.
+## Architecture
+### 1. Wazuh SIEM
+Collects and analyzes security logs and events from multiple sources.
+Provides a unified dashboard for monitoring security threats.
+### 2. Shuffle Webhook
+Automates the process of responding to Wazuh alerts by creating workflows.
+Integration with Wazuh allows you to repeat back alerts and handle various incidents automatically.
+### 3. DFIR-IRIS
+Connects to Shuffle to create new cases when specific rule IDs are triggered.
+Enables the tracking and management of incident response activities.
+### 4. VirusTotal Integration
+Active response mechanism to block suspicious IP addresses and delete malicious files based on Wazuh alerts.
+Uses VirusTotal API for malware detection and analysis.
 
-## Installation and Usage
+## Technologies Used
+Wazuh: Open-source security monitoring and SIEM solution.
+Shuffle: Automation tool for security operations.
+DFIR-IRIS: Incident response case management tool.
+VirusTotal: Online service that analyzes files and URLs for viruses and malware.
+Docker: Containerization platform used to deploy components.
+Webhook: Communication between Wazuh and Shuffle for real-time alerting.
 
-https://docs.tguard.org/
-
-## License
-
-
-| Component | Licensing |
-|-----------|-----------|
-| Wazuh | GNU General Public License v2.0 |
-| OpenSearch | Apache License 2.0 |
-| Shuffle | GNU Affero General Public License v3.0 |
-| DFIR-IRIS | GNU Lesser General Public License v3.0 |
-| MISP | GNU Affero General Public License v3.0 | 
-
-## Acknowledgments
-
-We would like to express our sincere gratitude to Universitas Indonesia - Japan International Cooperation Agency (UI-JICA Project) for their generous support and funding for the development of our T-Guard SOC Package. It is really helpful in making this development becomes a reality. We are thankful for the opportunity to collaborate with UI and JICA especially for their trust in our vision. This development would not have been possible without their support.
