@@ -11,7 +11,8 @@ while true; do
                     "7" "Install MISP" \
                     "8" "Setup IRIS <-> Wazuh Integration" \
                     "9" "Setup MISP <-> Wazuh Integration" \
-                    "10" "Show Status" 3>&1 1>&2 2>&3)
+                    "10" "Branding SIEM" \
+                    "11" "Show Status" 3>&1 1>&2 2>&3)
     # Script version 1.0 updated 15 November 2023
     # Depending on the chosen option, execute the corresponding command
     case $OPTION in
@@ -79,7 +80,18 @@ while true; do
         sudo docker exec -ti wazuh-wazuh.manager-1 chmod 550 /var/ossec/etc/rules/local_rules.xml
         cd wazuh && sudo docker compose restart
         ;;
+    
     10)
+        cp wazuh/Secureeye_png/spinner_on_light.svg:/usr/share/wazuh-dashboard/src/core/server/core_app/assets/logos/spinner_on_light.svg
+        cp wazuh/Secureeye_png/spinner_on_dark.svg:/usr/share/wazuh-dashboard/src/core/server/core_app/assets/logos/spinner_on_dark.svg
+        cp wazuh/Secureeye_png/wazuh_mark_on_light.svg:/usr/share/wazuh-dashboard/src/core/server/core_app/assets/logos/wazuh_mark_on_light.svg
+        cp wazuh/Secureeye_png/wazuh_mark_on_dark.svg:/usr/share/wazuh-dashboard/src/core/server/core_app/assets/logos/wazuh_mark_on_dark.svg
+        cp wazuh/Secureeye_png/wazuh_login_bg.svg:/usr/share/wazuh-dashboard/src/core/server/core_app/assets/wazuh_login_bg.svg
+        cp wazuh/Secureeye_png/30e500f584235c2912f16c790345f966.svg:/usr/share/wazuh-dashboard/plugins/securityDashboards/target/public/30e500f584235c2912f16c790345f966.svg
+        cp wazuh/Secureeye_png/favicon.ico:/usr/share/wazuh-dashboard/src/core/server/core_app/assets/favicons/favicon.ico
+        cd wazuh && sudo docker compose restart
+        ;;
+    11)
         sudo docker ps
         ;;
 esac
