@@ -47,16 +47,6 @@ services:
       - ./config/wazuh_indexer_ssl_certs/wazuh.manager.pem:/etc/ssl/filebeat.pem
       - ./config/wazuh_indexer_ssl_certs/wazuh.manager-key.pem:/etc/ssl/filebeat.key
       - ./config/wazuh_cluster/wazuh_manager.conf:/wazuh-config-mount/etc/ossec.conf
-      - ./custom-integrations/custom-iris.py:/var/ossec/integrations/custom-iris.py
-      - ./custom-integrations/local_rules.xml:/var/ossec/etc/rules/local_rules.xml
-      - ./Secureeye_png/spinner_on_light.svg:/usr/share/wazuh-dashboard/src/core/server/core_app/assets/logos
-      - ./Secureeye_png/spinner_on_dark.svg:/usr/share/wazuh-dashboard/src/core/server/core_app/assets/logos
-      - ./Secureeye_png/wazuh_mark_on_light.svg:/usr/share/wazuh-dashboard/src/core/server/core_app/assets/logos
-      - ./Secureeye_png/wazuh_mark_on_dark.svg:/usr/share/wazuh-dashboard/src/core/server/core_app/assets/logos
-      - ./Secureeye_png/wazuh_login_bg.svg:/usr/share/wazuh-dashboard/src/core/server/core_app/assets
-      - ./Secureeye_png/30e500f584235c2912f16c790345f966.svg:/usr/share/wazuh-dashboard/plugins/securityDashboards/target/public
-      - ./Secureeye_png/favicon.ico:/usr/share/wazuh-dashboard/src/core/server/core_app/assets/favicons
-
   wazuh.indexer:
     image: suvadip09/wazuh-indexer:4.9.0
     hostname: wazuh.indexer
@@ -110,6 +100,10 @@ services:
       - ./config/wazuh_dashboard/wazuh.yml:/usr/share/wazuh-dashboard/data/wazuh/config/wazuh.yml
       - wazuh-dashboard-config:/usr/share/wazuh-dashboard/data/wazuh/config
       - wazuh-dashboard-custom:/usr/share/wazuh-dashboard/plugins/wazuh/public/assets/custom
+      - wazuh_customlogo:/usr/share/wazuh-dashboard/src/core/server/core_app/assets/logos
+      - wazuh_customdashboard:/usr/share/wazuh-dashboard/src/core/server/core_app/assets
+      - wazuh_customfavicon:/usr/share/wazuh-dashboard/src/core/server/core_app/assets/favicons
+      - wazuh_modify:/usr/share/wazuh-dashboard/plugins/securityDashboards/target/public
     depends_on:
       - wazuh.indexer
     links:
@@ -131,6 +125,10 @@ volumes:
   wazuh-indexer-data:
   wazuh-dashboard-config:
   wazuh-dashboard-custom:
+  wazuh_customlogo:
+  wazuh_customdashboard:
+  wazuh_customfavicon:
+  wazuh_modify:
 
 networks:
   shared-network:
