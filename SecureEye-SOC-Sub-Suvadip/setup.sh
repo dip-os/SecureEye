@@ -82,14 +82,21 @@ while true; do
         ;;
     
     10)
-        cp wazuh/Secureeye_png/spinner_on_light.svg:/usr/share/wazuh-dashboard/src/core/server/core_app/assets/logos/spinner_on_light.svg
-        cp wazuh/Secureeye_png/spinner_on_dark.svg:/usr/share/wazuh-dashboard/src/core/server/core_app/assets/logos/spinner_on_dark.svg
-        cp wazuh/Secureeye_png/wazuh_mark_on_light.svg:/usr/share/wazuh-dashboard/src/core/server/core_app/assets/logos/wazuh_mark_on_light.svg
-        cp wazuh/Secureeye_png/wazuh_mark_on_dark.svg:/usr/share/wazuh-dashboard/src/core/server/core_app/assets/logos/wazuh_mark_on_dark.svg
-        cp wazuh/Secureeye_png/wazuh_login_bg.svg:/usr/share/wazuh-dashboard/src/core/server/core_app/assets/wazuh_login_bg.svg
-        cp wazuh/Secureeye_png/30e500f584235c2912f16c790345f966.svg:/usr/share/wazuh-dashboard/plugins/securityDashboards/target/public/30e500f584235c2912f16c790345f966.svg
-        cp wazuh/Secureeye_png/favicon.ico:/usr/share/wazuh-dashboard/src/core/server/core_app/assets/favicons/favicon.ico
+        cp wazuh/Secureeye_png/spinner_on_light.svg /var/lib/docker/volumes/wazuh_wazuh_customlogo/_data/spinner_on_light.svg
+        cp wazuh/Secureeye_png/spinner_on_dark.svg /var/lib/docker/volumes/wazuh_wazuh_customlogo/_data/spinner_on_dark.svg
+        cp wazuh/Secureeye_png/wazuh_mark_on_light.svg /var/lib/docker/volumes/wazuh_wazuh_customlogo/_data/wazuh_mark_on_light.svg
+        cp wazuh/Secureeye_png/wazuh_mark_on_dark.svg var/lib/docker/volumes/wazuh_wazuh_customlogo/_data/wazuh_mark_on_dark.svg
+        sudo docker exec -ti wazuh-wazuh.dashboard-1 chown wazuh-dashboard:wazuh-dashboard /usr/share/wazuh-dashboard/src/core/server/core_app/assets/logos/*.svg
+        cp wazuh/Secureeye_png/wazuh_login_bg.svg /var/lib/docker/volumes/wazuh_wazuh_customdashboard/_data/wazuh_login_bg.svg
+        sudo docker exec -ti wazuh-wazuh.dashboard-1 chown wazuh-dashboard:wazuh-dashboard /usr/share/wazuh-dashboard/src/core/server/core_app/assets/wazuh_login_bg.svg
+        cp wazuh/Secureeye_png/favicon.ico /var/lib/docker/volumes/wazuh_wazuh_customfavicon/_data/favicon.ico
+        sudo docker exec -ti wazuh-wazuh.dashboard-1 chown wazuh-dashboard:wazuh-dashboard /usr/share/wazuh-dashboard/src/core/server/core_app/assets/favicons/favicon.ico
+        cp wazuh/Secureeye_png/30e500f584235c2912f16c790345f966.svg /var/lib/docker/volumes/wazuh_wazuh_modify/_data/30e500f584235c2912f16c790345f966.svg
+        sudo docker exec -ti wazuh-wazuh.dashboard-1 chown wazuh-dashboard:wazuh-dashboard /usr/share/wazuh-dashboard/plugins/securityDashboards/target/public/30e500f584235c2912f16c790345f966.svg
+
         cd wazuh && sudo docker compose restart
+
+
         ;;
     11)
         sudo docker ps
